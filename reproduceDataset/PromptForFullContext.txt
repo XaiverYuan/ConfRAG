@@ -1,0 +1,24 @@
+You are given a factual question and the full content of a webpage that may contain an answer to the question. Your task is to:
+
+1. **Extract the core answer**: Identify the core point or conclusion from the webpage that directly answers the question. Make sure the answer is clear, concise, and directly addresses the question.
+
+2. **Extract the supporting reasons**: Identify the reasons or explanations given in the webpage that support the core answer. Each reason should be a distinct, understandable point that explains why the answer is valid.
+
+3. **Avoid hallucinations**: Ensure that each reason is directly or indirectly supported by the content of the webpage. Do not add information that is not present in the source content. Double-check that the extracted content is genuinely from the text and not inferred or assumed.
+
+4. **Evaluate the trustworthiness**: Assign a **trust_score** from 0 to 10, where 10 indicates highly trustworthy content (e.g., supported by facts or reputable sources) and 0 indicates unreliable or non-relevant content.
+
+5. **If there is an issue** (e.g., the content is completely meaningless, irrelevant, or cannot be extracted), use the **additional field** to explain the issue. For example, if the webpage content is entirely an advertisement or unrelated to the question, mark it as "meaningless content."
+
+### Output format:
+```json
+{
+  "answer": "The core answer extracted from the webpage that directly answers the question.",
+  "reason": [
+    "Reason 1 explaining the answer.",
+    "Reason 2 explaining the answer.",
+    "Reason 3 explaining the answer."
+  ],
+  "additional": "",  // Leave empty unless there is an issue with the content, e.g., "meaningless content"
+  "trust_score": 8   // Score based on the trustworthiness of the content
+}

@@ -1,0 +1,69 @@
+You are given a set of structured answer-reason-index triples that have been extracted from multiple webpages in response to a specific factual question. Each entry includes:
+- An `index` indicating the source webpage number
+- A proposed `answer` that summarizes the main viewpoint expressed on that page
+- A list of `reason`s that support that answer
+
+Your task is to:
+1. **Cluster the answers into semantically consistent groups**, where each group represents a distinct, coherent viewpoint.
+    - If multiple answers express the same meaning using different wording, group them into one cluster.
+    - Each webpage index can appear in **only one answer cluster**. Do not assign the same index to multiple answers.
+
+2. **Aggregate the reasons** for each answer cluster:
+    - Combine reasons with similar meaning from different indexes into a unified reason entry.
+    - Each reason should include the list of indexes where it was found.
+    - An index may support multiple reasons, but only within the same answer group.
+
+3. **Discard meaningless or unrelated content**:
+    - If a given index corresponds to irrelevant, incoherent, or meaningless content, do not include it in any answer cluster.
+    - In that case, include its index in the `additional` field with a brief explanation.
+
+4. **Detect contradictions** between answer clusters:
+    - If two or more answer clusters express mutually exclusive claims, set `contradicts: true`; otherwise, use `false`.
+
+5. **Avoid hallucinations**:
+    - You must not add any content that is not present in the input.
+    - Each answer and each reason must directly reflect the inputs they came from.
+
+### Output format (JSON):
+```json
+{
+  "answers": [
+    {
+      "answer": "Clustered answer representing a shared viewpoint.",
+      "answer judge keyword": ["keyword1", "keyword2"], 
+      "index": [0, 3, 5],
+      "reason": [
+        {
+          "explain": "A unified reason that supports this answer.",
+          "reason judge keyword": ["reason_keyword1", "reason_keyword2"],
+          "index": [0, 3]
+        },
+        {
+          "explain": "Another reason with different emphasis.",
+          "reason judge keyword": ["reason_keyword3"],
+          "index": [5]
+        }
+      ]
+    },
+    {
+      "answer": "A different answer expressing a contradictory or alternative viewpoint.",
+      "answer judge keyword": ["keyword3", "keyword4"],
+      "index": [1, 2],
+      "reason": [
+        {
+          "explain": "A reason explaining this opposing viewpoint.",
+          "reason judge keyword": ["reason_keyword5"],
+          "index": [1]
+        }
+      ]
+    }
+  ],
+  "contradicts": true,
+  "additional": "Indexes 8 and 17 were discarded due to irrelevant or meaningless content."
+}
+Notes for the model:
+- Be strict: Do not hesitate to discard data. If an index includes content that is off-topic, spammy, or incoherent, you must explain it in the additional field and leave it out of all answer clusters.
+- Be grounded: Do not invent keywords, reasons, or relationships. Everything you include must come from the inputs provided.
+- "answer judge keyword" should be a **minimal but sufficient** list of phrases or words that, when **all are matched**, indicate that a model has provided this answer. 
+- Avoid using overly generic words like "stages", "highest-ranking", or single years like "1857" unless they are paired with context. Use phrases instead (e.g., "control by 1818", "direct British rule").
+- Do not use judge keywords that overlap significantly with those from other answer clusters. All keywords in the list must appear in the response for it to count as a match.

@@ -1,0 +1,49 @@
+
+You are given:
+- A question
+- A set of webpage contents, each with a corresponding index
+- A target number of clusters (clustering number)
+
+# Task
+Your task is to process the webpage contents and organize them into the required number of clusters based on their answers to the question.
+
+# Rule
+Each cluster should contain:
+1. A single core "answer" that represents the main viewpoint of the group.
+2. A list of "index" values representing the webpages that support this answer.
+3. A list of "reason" entries explaining why this answer is supported. Each reason should be a concise, specific point.
+
+# Instructions:
+- You must create exactly [CLUSTERING NUMBER] clusters, no more, no fewer.
+- You must include all index in your clusters, do not miss anyone.
+- Each answer should be distinct and represent a unique viewpoint.
+- Supporting Reasons must be grounded in the content of the webpages. Do not invent information that is not present in the original content.
+- Be concise and factual. Avoid redundant or overly generic answers and reasons.
+- If a webpage content supports multiple reasons under the same answer, include all relevant reasons under the corresponding answer.
+- Output must be a valid JSON object exactly as specified. Do not include any additional text, comments, or explanations outside the JSON.
+- Clusters must form a non-overlapping partition of all indexes: each index must appear in one and only one cluster.
+
+# Example
+Output strictly in the following JSON format:
+```json
+{
+  "answers": [
+    {
+      "answer": "The core answer representing one cluster.",
+      "index": [1, 3],
+      "reason": ["Supporting reason 1", "Supporting reason 2"]
+    },
+    {
+      "answer": "The core answer representing another cluster.",
+      "index": [2],
+      "reason": ["Supporting reason 3", "Supporting reason 4"]
+    }
+    // Continue until [CLUSTERING NUMBER] clusters are completed
+  ]
+}
+
+# Attention
+- The numeric contents of the index arrays in different answers must not overlap. Each index should appear in exactly one index list.(such as "index": 1, 3 in [1, 3] and 2 in index [2] are mutually exclusive)
+- Each reason must be clearly supported by content from the corresponding webpage(s). Do not fabricate or generalize beyond what is explicitly stated.
+- The entire output must be a valid JSON object that follows the given format strictly—no additional comments, metadata, or text.
+- Ensure that the total set of indexes across all clusters forms a complete partition: every original index is included and none are duplicated.
