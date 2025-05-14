@@ -26,10 +26,15 @@ This repository accompanies our submission to the **NeurIPS 2025 Datasets & Benc
 - The secret key of the model you want to test on
 ### packages
 beautifulsoup4==4.13.4
+
 datasets==3.6.0
+
 google-search-results==2.4.2
+
 openai==1.78.1
+
 readability_lxml==0.8.1
+
 requests==2.32.3
 ## Quick Start
 - Fill out the Constants in Tools.py
