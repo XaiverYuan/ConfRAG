@@ -25,21 +25,30 @@ This repository accompanies our submission to the **NeurIPS 2025 Datasets & Benc
 - SerpAPI Secret Keys
 - The secret key of the model you want to test on
 ### packages
-beautifulsoup4==4.13.4
+We are using python version 3.12.9. However we think as far as it supports ```list```, ```tuple``` as type annotation (after 3.9), it is fine. On the other hand, if it is not fine, use 3.12.9.
 
-datasets==3.6.0
+- beautifulsoup4==4.13.4
 
-google-search-results==2.4.2
+- datasets==3.6.0
 
-openai==1.78.1
+- google-search-results==2.4.2
 
-readability_lxml==0.8.1
+- openai==1.78.1
 
-requests==2.32.3
+- readability_lxml==0.8.1
+
+- requests==2.32.3
+
+- lxml_html_clean==0.4.2
 ## Quick Start
 - Fill out the Constants in Tools.py
-- test if it works properly
-- go to each sub-directory based on your purpose. Each sub-directory has its own ReadMe.
+- Test if it works properly
+- Go to each sub-directory based on your purpose. Each sub-directory has its own ReadMe.
+    - When I try to read other repo's Readme, I always struggle with those loooooooooooooooooooong ReadMe. In most case, I only want to redo 10% experiment.
+- If you want to reproduce our dataset, please go to folder ```reproduceDataset```
+- If you want to evaluate some model on our dataset, please go to folder ```generateResult```
+- If you want to grade a existed json, please go to folder ```analysisResult```
+    - For this folder, you need to generate a json from ```generateResult```
 > Due to the difference in environment, if you see errors like: ModuleNotFoundError, No Module named 'Tools'. You could set your PYTHONPATH to the directory by 
 ```bash
 export PYTHONPATH=$(pwd)

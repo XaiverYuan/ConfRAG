@@ -1,5 +1,3 @@
-import os
-import random
 import json
 from Tools import chatWithGPT,jsonClean
 from typing import Union, List, Dict
@@ -107,6 +105,6 @@ class GenerateResult:
         else:
             print(json.dumps(toSave,indent=4,ensure_ascii=False))
 if __name__=='__main__':
-    with open('/home/oracleyuan/rag/FinalDataset/11.json','r',encoding='utf-8') as f:
-        data=json.load(f)
+    from datasets import load_dataset
+    data=load_dataset("XaiverYuan/ConfRAG_dataset")['train'][8]
     print(GenerateResult(data,saveTo='result.json').process())

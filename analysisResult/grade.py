@@ -250,3 +250,10 @@ def show(result):
     print("reasonScore: ",result['reasonScore'])
     print("badPartition: ",result['badPartition'])
     
+if __name__ == "__main__":
+    with open("../generateResult/example.json", "r") as f:
+        result = json.load(f)
+    from datasets import load_dataset
+    data=load_dataset("XaiverYuan/ConfRAG_dataset")['train'][8]
+    # the question should be "Are children more susceptible to radiation from electronic devices?"
+    show(test(result,data))

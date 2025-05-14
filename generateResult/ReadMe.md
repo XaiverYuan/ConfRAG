@@ -43,7 +43,7 @@ from datasets import load_dataset
 ds = load_dataset("OracleY/ConfRAG")
 data=ds['train'][0]
 ```
-
+2. Select the model you want to test on:
 2. Process the data:
 ```python
 GenerateResult(data, saveTo='result.json').process()

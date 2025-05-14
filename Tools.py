@@ -20,7 +20,7 @@ OPENAI_BASE_URL = os.environ.get('OPENAI_BASE_URL', 'https://api.openai.com/v1')
 
 def chatWithGPT(
     messages: Union[str, List[Dict[str, str]]],
-    model: str = "gpt-4",
+    model: str = "gpt-4o",
     temperature: float = 0.1,
     max_tokens: int = 1000
 ) -> Tuple[str, bool]:
