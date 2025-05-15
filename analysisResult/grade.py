@@ -217,7 +217,7 @@ def test(received,data):
     result['NMIgot']=received_group
     selfinfo=data['answers']
     answers=[i['answer'] for i in answer]
-    info=[i['answer judge keyword'] for i in selfinfo]
+    info=[i['answer_judge_keyword'] for i in selfinfo]
     answerMatchScore,matchPath= compare_answer(answers,info)
     result['answerMatchCount']=answerMatchScore
     result['match']=[]
@@ -227,7 +227,7 @@ def test(received,data):
     Linfo=len(info)
     for match in matchPath:
         answerReason=answer[match[0]]['reason']
-        infoReason=[i['reason judge keyword'] for i in selfinfo[match[1]]['reason']]
+        infoReason=[i['reason_judge_keyword'] for i in selfinfo[match[1]]['reason']]
         reasonMatches,_=compare_answer(answerReason,infoReason)
         if len(answerReason)!=0:
             result['reasonScore']+=reasonMatches/((len(answerReason)*len(infoReason))**0.5)

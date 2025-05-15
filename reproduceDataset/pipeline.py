@@ -189,6 +189,12 @@ class Pipeline:
         self.data['from']='created by user'
         self.data['answers']=self.data['final_answer']['answers']
         self.data.pop('final_answer')
+        for ans in self.data['answers']:
+            ans['answer_judge_keyword']=ans['answer judge keyword']
+            ans.pop('answer judge keyword')
+            for r in ans['reason']:
+                r['reason_judge_keyword']=r['reason judge keyword']
+                r.pop('reason judge keyword')
     def _save(self)->None:
         with open(self.saveTo,'w') as f:
             json.dump(self.data,f,ensure_ascii=False)
