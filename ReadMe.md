@@ -42,7 +42,7 @@ We are using python version 3.12.9. However we think as far as it supports ```li
 
 - lxml_html_clean==0.4.2
 ## Quick Start
-- Fill out the Constants in Tools.py
+- Fill out the Constants in config.py
 - Test if it works properly
 - Go to each sub-directory based on your purpose. Each sub-directory has its own ReadMe.
     - When I try to read other repo's Readme, I always struggle with those loooooooooooooooooooong ReadMe. In most case, I only want to redo 10% experiment.
