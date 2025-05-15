@@ -254,6 +254,7 @@ def show(result):
     print("answerScore: ",result['answerScore'])
     print("reasonScore: ",result['reasonScore'])
     print("badPartition: ",result['badPartition'])
+    print("If badPartition is not Normal, the NMI score is 0")
     
 if __name__ == "__main__":
     with open("generateResult/example.json", "r") as f:
