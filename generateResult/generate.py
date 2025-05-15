@@ -113,9 +113,11 @@ class GenerateResult:
         if self.saveTo is not None:
             with open(self.saveTo,'w',encoding='utf-8') as f:
                 json.dump(toSave,f,indent=4,ensure_ascii=False)
+                print("Result is generated and saved to",self.saveTo)
         else:
             print(json.dumps(toSave,indent=4,ensure_ascii=False))
 if __name__=='__main__':
     from datasets import load_dataset
     data=load_dataset("OracleY/ConfRAG")['train'][8]
-    print(GenerateResult(data,saveTo='result.json').process())
+    GenerateResult(data,saveTo='result.json').process()
+    
