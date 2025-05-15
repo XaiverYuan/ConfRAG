@@ -8,21 +8,19 @@ This module provides utilities for:
 
 # Standard library imports
 import json
-import os
 from typing import Union, List, Dict, Tuple
 
 # Third-party imports
 from openai import OpenAI
 
-# Environment variables
-OPENAI_API_KEY = os.environ['OPENAI_API_KEY']
-OPENAI_BASE_URL = os.environ.get('OPENAI_BASE_URL', 'https://api.openai.com/v1')
+# Import configuration
+from config import OPENAI_API_KEY, OPENAI_BASE_URL, DEFAULT_MODEL, DEFAULT_TEMPERATURE, DEFAULT_MAX_TOKENS
 
 def chatWithGPT(
     messages: Union[str, List[Dict[str, str]]],
-    model: str = "gpt-4o",
-    temperature: float = 0.1,
-    max_tokens: int = 1000
+    model: str = DEFAULT_MODEL,
+    temperature: float = DEFAULT_TEMPERATURE,
+    max_tokens: int = DEFAULT_MAX_TOKENS
 ) -> Tuple[str, bool]:
     """Chat with GPT model and get response.
     
@@ -35,11 +33,11 @@ def chatWithGPT(
         Input messages for the chat. Can be either a string or a list of message dictionaries
         containing 'role' and 'content' keys.
     model : str, optional
-        The model to use, by default "gpt-4".
+        The model to use, by default from config.
     temperature : float, optional
-        Controls randomness of the output, by default 0.1.
+        Controls randomness of the output, by default from config.
     max_tokens : int, optional
-        Maximum number of tokens to generate, by default 1000.
+        Maximum number of tokens to generate, by default from config.
         
     Returns
     -------

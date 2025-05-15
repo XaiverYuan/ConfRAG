@@ -1,10 +1,11 @@
 import json
-from Tools import chatWithGPT,jsonClean
-from typing import Union, List, Dict
+
+from Tools import chatWithGPT, jsonClean
 from generateIndex import generateIndex
+from config import TEST_PROMPT_PATH
 
 
-def generate(data:dict,human_prompt:bool=False,manual_index:list[list[int]]=None)->tuple[list[dict],list[list[int]]]:
+def generate(data:dict, human_prompt:bool=False, manual_index:list[list[int]]=None)->tuple[list[dict],list[list[int]]]:
     """
     Generate a prompt and website grouping information based on input data.
 
@@ -47,11 +48,21 @@ def generate(data:dict,human_prompt:bool=False,manual_index:list[list[int]]=None
     2. At least one group has multiple websites
     3. Total websites <= MAX_WEBSITES (5)
     """
-    with open('TestPrompt.txt','r',encoding='utf-8') as f:
-        prompt=[{"role":"system","content":f.read()}]
+    with open(TEST_PROMPT_PATH, 'r', encoding='utf-8') as f:
+        prompt = [{"role":"system", "content":f.read()}]
     content=f"## Question\n{data['question']}\n\n## Website Information\n"
+    filteredWebs=[]
+    for i in range(len(data['websites'])):
+        if 'index' in data['websites'][i]:
+            filteredWebs.append(data['websites'][i])
+    data['websites']=filteredWebs
+
+    print(len(data['websites']))
+    print([i.keys() for i in data['websites']])
+    websites={e['index']:e for e in data['websites']}
     remaining,info=generateIndex(data,manual_index)
     forPrompt=[]
+    print(len(data['websites']))
     websites={e['index']:e for e in data['websites']}
     for i in remaining:
         if human_prompt:
@@ -106,5 +117,8 @@ class GenerateResult:
             print(json.dumps(toSave,indent=4,ensure_ascii=False))
 if __name__=='__main__':
     from datasets import load_dataset
-    data=load_dataset("XaiverYuan/ConfRAG_dataset")['train'][8]
+    data=load_dataset("OracleY/ConfRAG")['train'][8]
+    with open("/home/oracleyuan/test.json") as f:
+      data=json.load(f)
+
     print(GenerateResult(data,saveTo='result.json').process())
