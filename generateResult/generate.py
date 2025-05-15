@@ -118,7 +118,4 @@ class GenerateResult:
 if __name__=='__main__':
     from datasets import load_dataset
     data=load_dataset("OracleY/ConfRAG")['train'][8]
-    with open("/home/oracleyuan/test.json") as f:
-      data=json.load(f)
-
     print(GenerateResult(data,saveTo='result.json').process())

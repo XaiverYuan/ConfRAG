@@ -5,6 +5,7 @@ from functools import lru_cache
 from collections import defaultdict
 from config import CACHE_SIZE
 
+
 def bad_partition(grouping_pred:list[list[int]],grouping_true:list[list[int]]):
     """
     Check if grouping_pred is a bad partition.
