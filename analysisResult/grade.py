@@ -202,6 +202,8 @@ def test(received,data):
                 info.append(currGroup)
     else:
         raise Exception("Please check the format of the received data")
+    if 'id' not in data:
+        data['id']='0'
     result={'id':data['id'],'correctAnswer':data['answers'],'gotAnswer':answer}
     received_group=[i['index'] for i in answer]
     newGroupInfo=info
