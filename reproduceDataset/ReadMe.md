@@ -30,14 +30,14 @@ A dictionary with the following structure:
 
 ### Process:
 1. Get websites
-    - First, use GPT-4 to generate a keyword for better search results
+    - First, use GPT-4o to generate a keyword for better search results
     - Use the generated keyword to search on SerpAPI
 2. Process each website
     - Check if the website is allowed to be crawled
         - If not, continue to the next website
     - Crawl the information using jina.ai
-    - Ask GPT-4 about the question with the web content
-        - If GPT-4 determines the website is unrelated or useless, continue to the next website
+    - Ask GPT-4o about the question with the web content
+        - If GPT-4o determines the website is unrelated or useless, continue to the next website
 3. Summarize information
     - Based on processed websites, summarize clusters, answers, and reasons
 

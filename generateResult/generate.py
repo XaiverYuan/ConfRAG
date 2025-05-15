@@ -1,10 +1,11 @@
 import json
-from Tools import chatWithGPT,jsonClean
-from typing import Union, List, Dict
+
+from Tools import chatWithGPT, jsonClean
 from generateIndex import generateIndex
+from config import TEST_PROMPT_PATH
 
 
-def generate(data:dict,human_prompt:bool=False,manual_index:list[list[int]]=None)->tuple[list[dict],list[list[int]]]:
+def generate(data:dict, human_prompt:bool=False, manual_index:list[list[int]]=None)->tuple[list[dict],list[list[int]]]:
     """
     Generate a prompt and website grouping information based on input data.
 
@@ -47,8 +48,8 @@ def generate(data:dict,human_prompt:bool=False,manual_index:list[list[int]]=None
     2. At least one group has multiple websites
     3. Total websites <= MAX_WEBSITES (5)
     """
-    with open('TestPrompt.txt','r',encoding='utf-8') as f:
-        prompt=[{"role":"system","content":f.read()}]
+    with open(TEST_PROMPT_PATH, 'r', encoding='utf-8') as f:
+        prompt = [{"role":"system", "content":f.read()}]
     content=f"## Question\n{data['question']}\n\n## Website Information\n"
     remaining,info=generateIndex(data,manual_index)
     forPrompt=[]

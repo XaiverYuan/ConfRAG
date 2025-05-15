@@ -1,8 +1,12 @@
 import random
-MAX_WEBSITES=5
+from config import MAX_WEBSITES
+
+
 class InvalidDataException(Exception):
     pass
-def generateIndex(data:dict,manual_index:list[list[int]]=None)->tuple[list[dict],list[list[int]]]:
+
+
+def generateIndex(data:dict, manual_index:list[list[int]]=None)->tuple[list[dict],list[list[int]]]:
     """Generate a valid partition of indexes.
 
     A valid partition must satisfy the following conditions:

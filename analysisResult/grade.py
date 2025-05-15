@@ -1,7 +1,10 @@
-from functools import lru_cache
-import math
-from collections import defaultdict
 import json
+import math
+
+from functools import lru_cache
+from collections import defaultdict
+from config import CACHE_SIZE
+
 
 def bad_partition(grouping_pred:list[list[int]],grouping_true:list[list[int]]):
     """
@@ -142,7 +145,7 @@ def compare_answer(answers: list[str], info: list[list[str]]) -> tuple[int, list
         - match_path: List of tuples containing matched indices
     """
     n, m = len(answers), len(info)
-    @lru_cache(maxsize=1024)
+    @lru_cache(maxsize=CACHE_SIZE)
     def dfs(used_mask: int, idx: int) -> tuple[int, tuple[tuple[int, int], ...]]:
         if idx == n:
             return 0, ()

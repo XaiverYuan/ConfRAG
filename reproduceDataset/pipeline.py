@@ -1,17 +1,17 @@
-from datetime import datetime
 import os
-
+import sys
 import json
-from Tools import chatWithGPT,jsonClean
 import requests
-from bs4 import BeautifulSoup
-from readability import Document
-from openai import OpenAI
-from typing import Union, List, Dict
 import urllib.robotparser
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from urllib.parse import urlparse
+
 from serpapi import GoogleSearch
-import time
+
+from Tools import chatWithGPT, jsonClean
+from config import SERPAPI_API_KEY, DEFAULT_USER_AGENT, KEYWORD_PROMPT_PATH, FULL_CONTEXT_PROMPT_PATH, SUMMARIZING_PROMPT_PATH
 
 
 """
@@ -20,11 +20,9 @@ You can get a free key from https://serpapi.com/
 It is only used in getWebsites function.
 If you want to alter the way to get websites, you can change the function.
 """
-SERPAPI_API_KEY= os.environ['SERPAPI_API_KEY']
 
 
-
-def is_allowed_by_robots(url:str, user_agent:str='*')->bool:
+def is_allowed_by_robots(url:str, user_agent:str=DEFAULT_USER_AGENT)->bool:
     """Check if a URL is allowed to be crawled according to robots.txt.
     
     We automatically respected robots.txt policies for all websites by using Python's robotparser before any retrieval.
@@ -35,7 +33,7 @@ def is_allowed_by_robots(url:str, user_agent:str='*')->bool:
     url : str
         The URL to check against robots.txt
     user_agent : str, optional
-        The user agent to check for, by default '*'
+        The user agent to check for, by default from config
         
     Returns
     -------
@@ -91,11 +89,12 @@ def getWebsites(q:str)->tuple[list[str],bool]:
     except Exception as e:
         return [],False
 
-with open("PromptGetKeyWord.txt", "r",encoding='utf-8') as f:
-    keywordPrompt=f.read()
-with open("PromptForFullContext.txt",'r') as f:
+# Read prompt file
+with open(KEYWORD_PROMPT_PATH, "r", encoding='utf-8') as f:
+    keywordPrompt = f.read()
+with open(FULL_CONTEXT_PROMPT_PATH, 'r') as f:
     FCprompt = f.read()
-with open("PromptSummarizingNew.txt",'r') as f:
+with open(SUMMARIZING_PROMPT_PATH, 'r') as f:
     Summarizingprompt = f.read()
 
 
