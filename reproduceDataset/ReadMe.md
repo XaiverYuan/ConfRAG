@@ -57,7 +57,7 @@ A dictionary with the following structure:
 ## How to reproduce the dataset
 1. Prepare your questions
     - If you want to reproduce the dataset, you can load the questions from the dataset.
-2. Get a SerpAPI key from https://serpapi.com/ and fill it in the pipeline.py variable SERPAPI_API_KEY
+2. Get a SerpAPI key from https://serpapi.com/ and fill it in the config.py variable SERPAPI_API_KEY
 3. Install prerequisites for this folder
 4. Run pipeline.py:
 ```python

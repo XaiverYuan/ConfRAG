@@ -24,6 +24,7 @@ This repository accompanies our submission to the **NeurIPS 2025 Datasets & Benc
 - OpenAI Secret Keys
 - SerpAPI Secret Keys
 - The secret key of the model you want to test on
+- Fill in the keys in config.py
 ### packages
 We are using python version 3.12.9. However we think as far as it supports ```list```, ```tuple``` as type annotation (after 3.9), it is fine. On the other hand, if it is not fine, use 3.12.9.
 
