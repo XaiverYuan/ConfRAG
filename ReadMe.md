@@ -1,7 +1,7 @@
 # RAG Contradiction Benchmark
-This repository accompanies our submission to the **NeurIPS 2025 Datasets & Benchmarks Track**.
+This repository accompanies our submission **Benchmarking LLM's Capability in Reasoning over Conflicting Web References** to the **ACL 2026**.
 
-**Author**: Yizhen Yuan
+**Author**: Yizhen Yuan, Rui Kong, Dongze Li, Yuanchun Li, Yunxin Liu
 
 ## Repository Layout
 
@@ -45,7 +45,7 @@ We are using python version 3.12.9. However we think as far as it supports ```li
 - Fill out the Constants in config.py
 - Test if it works properly
 - Go to each sub-directory based on your purpose. Each sub-directory has its own ReadMe.
-    - When I try to read other repo's Readme, I always struggle with those loooooooooooooooooooong ReadMe. In most case, I only want to redo 10% experiment.
+    - ~~When I try to read other repo's Readme, I always struggle with those loooooooooooooooooooong ReadMe. In most case, I only want to redo 10% experiment.~~ Glad we have claude code now, we can ask them to do all these things :)
 - If you want to reproduce our dataset, please go to folder ```reproduceDataset```
 - If you want to evaluate some model on our dataset, please go to folder ```generateResult```
 - If you want to grade a existed json, please go to folder ```analysisResult```

@@ -160,7 +160,7 @@ class Pipeline:
                     break
             except Exception as e:
                 continue
-        if len(self.data['websites'])<3:
+        if len(goodWebsites)<3:
             # this could be changed to a warning
             # in practice, we use 3 here
             self.errorCode="too few websites processed"

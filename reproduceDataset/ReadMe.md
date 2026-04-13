@@ -1,9 +1,4 @@
-# RAG Contradiction Benchmark
-This repository accompanies our submission to the **NeurIPS 2025 Datasets & Benchmarks Track**.
-
-**Author**: Yizhen Yuan
-
-## How we generate our dataset
+# How we generate our dataset
 ### Input: 
 - question: str
 
@@ -41,7 +36,7 @@ A dictionary with the following structure:
 3. Summarize information
     - Based on processed websites, summarize clusters, answers, and reasons
 
-## Repository Layout
+# Folder Structure
 
 - pipeline.py
     - Main script for dataset generation pipeline

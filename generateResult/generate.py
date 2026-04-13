@@ -57,13 +57,9 @@ def generate(data:dict, human_prompt:bool=False, manual_index:list[list[int]]=No
             filteredWebs.append(data['websites'][i])
     data['websites']=filteredWebs
 
-    print(len(data['websites']))
-    print([i.keys() for i in data['websites']])
     websites={e['index']:e for e in data['websites']}
     remaining,info=generateIndex(data,manual_index)
     forPrompt=[]
-    print(len(data['websites']))
-    websites={e['index']:e for e in data['websites']}
     for i in remaining:
         if human_prompt:
             if i in data['websites']:

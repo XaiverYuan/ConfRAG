@@ -1,10 +1,4 @@
-# RAG Contradiction Benchmark
-
-This repository accompanies our submission to the **NeurIPS 2025 Datasets & Benchmarks Track**.
-
-**Author**: Yizhen Yuan
-
-## Repository Structure
+# Folder Structure
 
 - `grade.py`: Main script for grading the result
 

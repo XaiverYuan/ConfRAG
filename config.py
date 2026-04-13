@@ -17,7 +17,7 @@ DEFAULT_TEMPERATURE = 0.1
 DEFAULT_MAX_TOKENS = 1000
 
 # Website crawling configuration
-MAX_WEBSITES = 5  # Maximum number of websites
+MAX_WEBSITES = 5  # Maximum number of websites fed to the model per question (sampled from ~10 retrieved)
 DEFAULT_USER_AGENT = '*'  # Default User Agent
 
 # File path

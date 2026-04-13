@@ -1,10 +1,4 @@
-# RAG Contradiction Benchmark
-
-This repository accompanies our submission to the **NeurIPS 2025 Datasets & Benchmarks Track**.
-
-**Author**: Yizhen Yuan
-
-## Experiment Design
+# Experiment Design
 
 The experiment follows a structured input-output format as described below:
 
@@ -23,7 +17,7 @@ The experiment follows a structured input-output format as described below:
     - index: list of int
     - reason: list of str
 
-## Repository Structure
+# Folder Structure
 
 - `generate.py`: Main script for generating results
 - `TestPrompt.txt`: Template prompt used for model interaction
