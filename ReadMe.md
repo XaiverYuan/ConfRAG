@@ -3,6 +3,8 @@ This repository accompanies our submission **Benchmarking LLM's Capability in Re
 
 **Author**: Yizhen Yuan, Rui Kong, Dongze Li, Yuanchun Li, Yunxin Liu
 
+The dataset is available on `https://huggingface.co/datasets/OracleY/ConfRAG`
+
 ## Repository Layout
 
 - reproduce_dataset/
