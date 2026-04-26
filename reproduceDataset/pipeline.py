@@ -3,6 +3,7 @@ import sys
 import json
 import requests
 import urllib.robotparser
+import time
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -160,6 +161,8 @@ class Pipeline:
                     break
             except Exception as e:
                 continue
+            time.sleep(3)
+                
         if len(goodWebsites)<3:
             # this could be changed to a warning
             # in practice, we use 3 here

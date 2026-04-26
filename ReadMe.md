@@ -82,4 +82,4 @@ Code is released under the CC-by-4.0 License.
 The dataset is distributed for research use only; please respect the original licences of all crawled webpages.
 
 ## Contact
-For questions or issues, email <yuanyz21@mails.tsinghua.edu.cn>.
+If you have any questions or issues, feel free to email <yuanyz21@mails.tsinghua.edu.cn>.
